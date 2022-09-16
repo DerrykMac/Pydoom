@@ -1,0 +1,23 @@
+{
+	"x": 0,
+	"y": 0,
+	"width": 1024,
+	"height": 1024,
+	"iid": "aaada340-2a00-11ed-b202-e5b6c09f8d14",
+	"layers": [],
+	"entities": {
+		"Player": [
+			{
+				"id": "Player",
+				"iid": "bfb98eb0-2a00-11ed-b202-c5a02fcd451d",
+				"layer": "Player",
+				"x": 480,
+				"y": 496,
+				"width": 16,
+				"height": 16,
+				"color": 3301847,
+				"customFields" : {}
+			}
+		]
+	}
+}

@@ -5,7 +5,7 @@ from Controller import *
 
 
 
-(width, height) = (640, 420)
+(width, height) = (1600, 800)
 screen = display.set_mode((width, height))
 background_colour = (255,255,255)
 
