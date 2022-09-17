@@ -1,9 +1,10 @@
 import Main as m
 import math
+import numpy as np
 
 def Update2():
     # move player
-    #get keys down
+    # get keys down
     keys = m.key.get_pressed()
     if keys[m.K_q]:
         m.Player_angle -= 5

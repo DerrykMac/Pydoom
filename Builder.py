@@ -1,13 +1,14 @@
 import json, csv, os, sys,math
-from operator import countOf
 import Main as m
+import numpy as np
+
 
 def castrayH(x, y, angle):
 
     global drr
     drr = 40
-    o_x = x
-    o_y = y
+    ##o_x = x
+    ##o_y = y
 
     dof = 0
     cutoff = 700
@@ -19,8 +20,8 @@ def castrayH(x, y, angle):
         y += (math.sin(math.radians(angle))) / subset
 
         #difference
-        diff_x = x - o_x
-        diff_y = y - o_y
+        ##diff_x = x - o_x
+        ##diff_y = y - o_y
 
         #increment
         dof += 1
@@ -55,10 +56,6 @@ def castrayH(x, y, angle):
         
 
     
-    
-
-#get normal from castray
- 
 
 dis = [0] * 120
 dir = [0] * 120
@@ -93,9 +90,12 @@ def Update():
     m.draw.circle(m.screen, (255,0,0), (m.Player_x, m.Player_y), 5)
 
     for i in range(-60, 60, 1):
-        #m.draw.line(m.screen, (255,0,0), (m.Player_x, m.Player_y), castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle), 1)
+        m.draw.line(m.screen, (10,200,10), (m.Player_x, m.Player_y), castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle), 1)
 
-        dis[(i + 60)] = math.sqrt((castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[0] - m.Player_x)**2 + (castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[1] - m.Player_y)**2) * math.cos(math.radians(i/2))
+        #dis[(i + 60)] = math.sqrt((castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[0] - m.Player_x)**2 + (castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[1] - m.Player_y)**2) * math.cos(math.radians(i/2))
+        #numpy version
+        dis[(i + 60)] = np.sqrt((castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[0] - m.Player_x)**2 + (castrayH(m.Player_x, m.Player_y, i/2 + m.Player_angle)[1] - m.Player_y)**2) * np.cos(np.radians(i/2))
+
         dir[(i + 60)] = drr
 
         
@@ -103,6 +103,7 @@ def Update():
     for i in range(0, 120, 1):
         hight = ((90 * 200) / dis[i])
         col = (255 - (dis[i] / 10), dir[i], 90) 
+
         #floor
         floor = 499 + (hight/2)
         m.draw.rect(m.screen, (68, 219, 189), m.Rect(1000 + (i * 5), floor, 5, 1000 - floor))
