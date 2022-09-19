@@ -11,13 +11,13 @@ def castrayH(x, y, angle):
     ##o_y = y
 
     dof = 0
-    cutoff = 700
+    cutoff = 500
     subset = 1
 
     while dof < cutoff:
-        #move x and y
-        x += (math.cos(math.radians(angle))) / subset
-        y += (math.sin(math.radians(angle))) / subset
+        #move x and y by subset
+        x += ((math.cos(math.radians(angle))) / subset)
+        y += ((math.sin(math.radians(angle))) / subset)
 
         #difference
         ##diff_x = x - o_x

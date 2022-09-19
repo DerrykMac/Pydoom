@@ -19,6 +19,8 @@ def Main():
   
   screen.fill(background_colour)
   Start()
+  
+  os.system('cls' if os.name == 'nt' else 'clear')
 
   running = True
   while running:
